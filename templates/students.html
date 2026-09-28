@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block title %}Students{% endblock %}
+
+{% block content %}
+
+<h1>Student Management</h1>
+
+<p class="subtitle">
+    Add, search, edit, delete and export student records.
+</p>
+
+
+<div class="button-row">
+
+    <a class="green-btn"
+       href="/export-csv">
+        📥 Export CSV
+    </a>
+
+    <a class="blue-btn"
+       href="/export-text">
+        📄 Export Text
+    </a>
+
+    <a class="purple-btn"
+       href="/backup">
+        💾 Pickle Backup
+    </a>
+
+</div>
+
+
+<form method="GET">
+
+    <label>
+        Search Student
+    </label>
+
+    <input
+        type="text"
+        name="search"
+        value="{{ search }}"
+        placeholder="Roll No, Name or Branch"
+    >
+
+    <button type="submit">
+        🔍 Search
+    </button>
+
+</form>
+
+
+<table>
+
+<tr>
+
+    <th>Roll No</th>
+    <th>Name</th>
+    <th>Branch</th>
+    <th>Semester</th>
+    <th>Email</th>
+    <th>Mobile</th>
+    <th>Attendance</th>
+    <th>Club</th>
+    <th>Actions</th>
+
+</tr>
+
+
+{% for student in students %}
+
+<tr>
+
+    <td>{{ student["roll_no"] }}</td>
+
+    <td>{{ student["name"] }}</td>
+
+    <td>{{ student["branch"] }}</td>
+
+    <td>{{ student["semester"] }}</td>
+
+    <td>{{ student["email"] }}</td>
+
+    <td>{{ student["mobile"] }}</td>
+
+    <td>{{ student["attendance"] }}%</td>
+
+    <td>{{ student["club"] }}</td>
+
+    <td>
+
+        <a href="/edit-student/{{ student['id'] }}">
+            ✏️ Edit
+        </a>
+
+        <a
+            href="/delete-student/{{ student['id'] }}"
+            onclick="return confirm('Delete this student?');"
+        >
+            🗑️ Delete
+        </a>
+
+    </td>
+
+</tr>
+
+{% else %}
+
+<tr>
+
+    <td colspan="9">
+        No student records found.
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

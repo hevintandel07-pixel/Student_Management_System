@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title %}Attendance{% endblock %}
+
+{% block content %}
+
+<h1>Student Attendance Management</h1>
+
+<p class="subtitle">
+    Calculate attendance percentage using Python functions.
+</p>
+
+
+<form method="POST">
+
+    <label>Select Student</label>
+
+    <select name="student_id" required>
+
+        <option value="">
+            -- Select Student --
+        </option>
+
+        {% for student in students %}
+
+        <option value="{{ student['id'] }}">
+
+            {{ student['roll_no'] }}
+            -
+            {{ student['name'] }}
+
+        </option>
+
+        {% endfor %}
+
+    </select>
+
+
+    <label>Total Working Days</label>
+
+    <input
+        type="number"
+        name="total_days"
+        min="1"
+        required
+    >
+
+
+    <label>Present Days</label>
+
+    <input
+        type="number"
+        name="present_days"
+        min="0"
+        required
+    >
+
+
+    <button type="submit">
+        Calculate Attendance
+    </button>
+
+</form>
+
+
+<h2>Attendance Records</h2>
+
+
+<table>
+
+<tr>
+
+    <th>Roll No</th>
+    <th>Name</th>
+    <th>Total Days</th>
+    <th>Present Days</th>
+    <th>Attendance</th>
+
+</tr>
+
+
+{% for record in attendance_data %}
+
+<tr>
+
+    <td>{{ record["roll_no"] }}</td>
+
+    <td>{{ record["name"] }}</td>
+
+    <td>{{ record["total_days"] }}</td>
+
+    <td>{{ record["present_days"] }}</td>
+
+    <td>
+        {{ record["attendance_percentage"] }}%
+    </td>
+
+</tr>
+
+{% else %}
+
+<tr>
+
+    <td colspan="5">
+        No attendance records available.
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

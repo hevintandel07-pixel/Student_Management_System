@@ -1,0 +1,270 @@
+{% extends "base.html" %}
+
+{% block title %}Analytics{% endblock %}
+
+{% block content %}
+
+<h1>Student Performance Analytics</h1>
+
+<p class="subtitle">
+    Pandas + NumPy + SciPy + Matplotlib + Seaborn
+</p>
+
+
+<div class="cards">
+
+    <div class="card">
+        <h2>Total Students</h2>
+        <h1>{{ total_students }}</h1>
+    </div>
+
+    <div class="card">
+        <h2>Average</h2>
+        <h1>{{ average }}%</h1>
+    </div>
+
+    <div class="card">
+        <h2>Highest</h2>
+        <h1>{{ highest }}%</h1>
+    </div>
+
+    <div class="card">
+        <h2>Lowest</h2>
+        <h1>{{ lowest }}%</h1>
+    </div>
+
+    <div class="card">
+        <h2>Passed</h2>
+        <h1>{{ pass_count }}</h1>
+    </div>
+
+    <div class="card">
+        <h2>Failed</h2>
+        <h1>{{ fail_count }}</h1>
+    </div>
+
+</div>
+
+
+<h2>📈 Performance Visualization</h2>
+
+<div class="card">
+
+    {% if total_students > 0 %}
+
+    <img
+        src="{{ url_for(
+            'static',
+            filename='performance_chart.png'
+        ) }}"
+        class="chart"
+    >
+
+    {% else %}
+
+    <p>
+        No marks data available.
+    </p>
+
+    {% endif %}
+
+</div>
+
+
+<h2>📊 Subject Correlation</h2>
+
+<div class="card">
+
+    {% if total_students > 0 %}
+
+    <img
+        src="{{ url_for(
+            'static',
+            filename='subject_analysis.png'
+        ) }}"
+        class="chart-small"
+    >
+
+    {% endif %}
+
+</div>
+
+
+<h2>📐 Statistical Analysis</h2>
+
+<table>
+
+<tr>
+    <th>Measure</th>
+    <th>Value</th>
+</tr>
+
+<tr>
+    <td>Standard Deviation</td>
+    <td>{{ std_dev }}</td>
+</tr>
+
+<tr>
+    <td>Variance</td>
+    <td>{{ variance }}</td>
+</tr>
+
+<tr>
+    <td>Skewness</td>
+    <td>{{ skewness }}</td>
+</tr>
+
+<tr>
+    <td>Kurtosis</td>
+    <td>{{ kurtosis }}</td>
+</tr>
+
+<tr>
+    <td>95% Confidence Interval</td>
+    <td>
+        {{ confidence_low }}
+        to
+        {{ confidence_high }}
+    </td>
+</tr>
+
+<tr>
+    <td>Pass Probability</td>
+    <td>{{ pass_probability }}%</td>
+</tr>
+
+<tr>
+    <td>Random Sample Size</td>
+    <td>{{ sample_size }}</td>
+</tr>
+
+<tr>
+    <td>Random Sample Mean</td>
+    <td>{{ sample_mean }}</td>
+</tr>
+
+</table>
+
+
+<h2>🧪 One-Sample T-Test</h2>
+
+<div class="card">
+
+    <p>
+        <strong>Benchmark:</strong> 40 marks
+    </p>
+
+    <p>
+        <strong>T-Statistic:</strong>
+        {{ t_stat }}
+    </p>
+
+    <p>
+        <strong>P-Value:</strong>
+        {{ p_value }}
+    </p>
+
+    <p>
+        <strong>Result:</strong>
+        {{ t_test_result }}
+    </p>
+
+</div>
+
+
+<h2>📊 Univariate Analysis</h2>
+
+<table>
+
+<tr>
+    <th>Measure</th>
+    <th>Subject 1</th>
+</tr>
+
+<tr>
+    <td>Mean</td>
+    <td>{{ univariate_mean }}</td>
+</tr>
+
+<tr>
+    <td>Median</td>
+    <td>{{ univariate_median }}</td>
+</tr>
+
+<tr>
+    <td>Mode</td>
+    <td>{{ univariate_mode }}</td>
+</tr>
+
+</table>
+
+
+<h2>📈 Bivariate Analysis</h2>
+
+<div class="card">
+
+    <p>
+        Correlation between Subject 1
+        and Subject 2:
+        <strong>{{ correlation }}</strong>
+    </p>
+
+</div>
+
+
+<h2>Student Performance Details</h2>
+
+<table>
+
+<tr>
+
+    <th>Roll No</th>
+    <th>Name</th>
+    <th>Attendance</th>
+    <th>Total</th>
+    <th>Percentage</th>
+    <th>Grade</th>
+    <th>Result</th>
+
+</tr>
+
+
+{% for student in students_data %}
+
+<tr>
+
+    <td>
+        {{ student["roll_no"] }}
+    </td>
+
+    <td>
+        {{ student["name"] }}
+    </td>
+
+    <td>
+        {{ student["attendance"] }}%
+    </td>
+
+    <td>
+        {{ student["total"] }}/500
+    </td>
+
+    <td>
+        {{ student["percentage"] }}%
+    </td>
+
+    <td>
+        {{ student["grade"] }}
+    </td>
+
+    <td>
+        {{ student["result"] }}
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

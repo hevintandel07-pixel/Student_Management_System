@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Student{% endblock %}
+
+{% block content %}
+
+<h1>Edit Student</h1>
+
+<form method="POST">
+
+    <label>Roll Number</label>
+
+    <input
+        type="text"
+        name="roll_no"
+        value="{{ student['roll_no'] }}"
+        required
+    >
+
+
+    <label>Student Name</label>
+
+    <input
+        type="text"
+        name="name"
+        value="{{ student['name'] }}"
+        required
+    >
+
+
+    <label>Branch</label>
+
+    <input
+        type="text"
+        name="branch"
+        value="{{ student['branch'] }}"
+        required
+    >
+
+
+    <label>Semester</label>
+
+    <input
+        type="number"
+        name="semester"
+        value="{{ student['semester'] }}"
+        min="1"
+        max="8"
+        required
+    >
+
+
+    <label>Email</label>
+
+    <input
+        type="email"
+        name="email"
+        value="{{ student['email'] }}"
+        required
+    >
+
+
+    <label>Mobile</label>
+
+    <input
+        type="text"
+        name="mobile"
+        value="{{ student['mobile'] }}"
+        required
+    >
+
+
+    <label>Attendance (%)</label>
+
+    <input
+        type="number"
+        name="attendance"
+        value="{{ student['attendance'] }}"
+        min="0"
+        max="100"
+    >
+
+
+    <label>Club Membership</label>
+
+    <select name="club">
+
+        <option
+            value="None"
+            {% if student['club'] == 'None' %}
+            selected
+            {% endif %}
+        >
+            None
+        </option>
+
+        <option
+            value="Coding Club"
+            {% if student['club'] == 'Coding Club' %}
+            selected
+            {% endif %}
+        >
+            Coding Club
+        </option>
+
+        <option
+            value="Sports Club"
+            {% if student['club'] == 'Sports Club' %}
+            selected
+            {% endif %}
+        >
+            Sports Club
+        </option>
+
+        <option
+            value="Cultural Club"
+            {% if student['club'] == 'Cultural Club' %}
+            selected
+            {% endif %}
+        >
+            Cultural Club
+        </option>
+
+        <option
+            value="Computer Society"
+            {% if student['club'] == 'Computer Society' %}
+            selected
+            {% endif %}
+        >
+            Computer Society
+        </option>
+
+    </select>
+
+
+    <button type="submit">
+        Update Student
+    </button>
+
+</form>
+
+{% endblock %}

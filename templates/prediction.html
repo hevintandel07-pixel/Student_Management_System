@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block title %}ML Prediction{% endblock %}
+
+{% block content %}
+
+<h1>Student Pass / Fail Prediction</h1>
+
+<p class="subtitle">
+    Machine Learning using Scikit-learn Decision Tree.
+</p>
+
+
+{% if accuracy is not none %}
+
+<div class="card">
+
+    <h2>
+        Model Accuracy
+    </h2>
+
+    <h1>
+        {{ accuracy }}%
+    </h1>
+
+</div>
+
+{% endif %}
+
+
+<form method="POST">
+
+    <label>Subject 1</label>
+
+    <input
+        type="number"
+        name="subject1"
+        min="0"
+        max="100"
+        required
+    >
+
+
+    <label>Subject 2</label>
+
+    <input
+        type="number"
+        name="subject2"
+        min="0"
+        max="100"
+        required
+    >
+
+
+    <label>Subject 3</label>
+
+    <input
+        type="number"
+        name="subject3"
+        min="0"
+        max="100"
+        required
+    >
+
+
+    <label>Subject 4</label>
+
+    <input
+        type="number"
+        name="subject4"
+        min="0"
+        max="100"
+        required
+    >
+
+
+    <label>Subject 5</label>
+
+    <input
+        type="number"
+        name="subject5"
+        min="0"
+        max="100"
+        required
+    >
+
+
+    <label>Attendance (%)</label>
+
+    <input
+        type="number"
+        name="attendance"
+        min="0"
+        max="100"
+        required
+    >
+
+
+    <button type="submit">
+        🤖 Predict Result
+    </button>
+
+</form>
+
+
+{% if prediction_result %}
+
+<div class="prediction-box">
+
+    <h2>
+        Prediction Result
+    </h2>
+
+    <h1>
+        {{ prediction_result }}
+    </h1>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block title %}Marks{% endblock %}
+
+{% block content %}
+
+<h1>Student Marks Management</h1>
+
+<p class="subtitle">
+    Enter five subject marks and automatically calculate
+    total, percentage, grade and result.
+</p>
+
+
+<form method="POST">
+
+    <label>Select Student</label>
+
+    <select name="student_id" required>
+
+        <option value="">
+            -- Select Student --
+        </option>
+
+        {% for student in students %}
+
+        <option value="{{ student['id'] }}">
+
+            {{ student['roll_no'] }}
+            -
+            {{ student['name'] }}
+
+        </option>
+
+        {% endfor %}
+
+    </select>
+
+
+    <label>Subject 1</label>
+
+    <input
+        type="number"
+        name="subject1"
+        min="0"
+        max="100"
+        required
+    >
+
+
+    <label>Subject 2</label>
+
+    <input
+        type="number"
+        name="subject2"
+        min="0"
+        max="100"
+        required
+    >
+
+
+    <label>Subject 3</label>
+
+    <input
+        type="number"
+        name="subject3"
+        min="0"
+        max="100"
+        required
+    >
+
+
+    <label>Subject 4</label>
+
+    <input
+        type="number"
+        name="subject4"
+        min="0"
+        max="100"
+        required
+    >
+
+
+    <label>Subject 5</label>
+
+    <input
+        type="number"
+        name="subject5"
+        min="0"
+        max="100"
+        required
+    >
+
+
+    <button type="submit">
+        Calculate & Save Marks
+    </button>
+
+</form>
+
+
+<h2>Student Results</h2>
+
+
+<table>
+
+<tr>
+
+    <th>Roll No</th>
+    <th>Name</th>
+    <th>Total</th>
+    <th>Percentage</th>
+    <th>Grade</th>
+    <th>Result</th>
+
+</tr>
+
+
+{% for mark in marks_data %}
+
+<tr>
+
+    <td>{{ mark["roll_no"] }}</td>
+
+    <td>{{ mark["name"] }}</td>
+
+    <td>{{ mark["total"] }}/500</td>
+
+    <td>{{ mark["percentage"] }}%</td>
+
+    <td>{{ mark["grade"] }}</td>
+
+    <td>{{ mark["result"] }}</td>
+
+</tr>
+
+{% else %}
+
+<tr>
+
+    <td colspan="6">
+        No marks records available.
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

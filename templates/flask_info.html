@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% block title %}Flask Architecture{% endblock %}
+
+{% block content %}
+
+<div class="dashboard">
+
+    <h1>🌐 Flask Web Application</h1>
+
+    <p class="subtitle">
+        Flask is the web framework used to build
+        the complete Student Management System.
+    </p>
+
+</div>
+
+
+<div class="cards">
+
+    <div class="card">
+        <h2>🐍 Python Backend</h2>
+
+        <p>
+            Flask connects the Python backend
+            with the web interface.
+        </p>
+    </div>
+
+
+    <div class="card">
+        <h2>🧩 Routing</h2>
+
+        <p>
+            Flask routes connect URLs with
+            Python functions.
+        </p>
+
+        <p>
+            Example:
+            <strong>/students</strong>,
+            <strong>/marks</strong>,
+            <strong>/analytics</strong>
+        </p>
+    </div>
+
+
+    <div class="card">
+        <h2>🎨 Jinja2 Templates</h2>
+
+        <p>
+            Python data is passed to HTML
+            pages using Flask templates.
+        </p>
+    </div>
+
+
+    <div class="card">
+        <h2>🗄️ Database Integration</h2>
+
+        <p>
+            Flask handles application requests
+            that interact with the SQLite database.
+        </p>
+    </div>
+
+
+    <div class="card">
+        <h2>📨 HTTP Requests</h2>
+
+        <p>
+            GET and POST requests are handled
+            using Flask's request system.
+        </p>
+    </div>
+
+
+    <div class="card">
+        <h2>📤 Response & File Handling</h2>
+
+        <p>
+            Flask renders pages, redirects users
+            and provides downloadable files.
+        </p>
+    </div>
+
+</div>
+
+
+<h2>⚙️ Flask Application Architecture</h2>
+
+
+<div class="card architecture">
+
+    <div class="architecture-box">
+        👤 User / Browser
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="architecture-box">
+        🌐 Flask Route
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="architecture-box">
+        🐍 Python Application Logic
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="architecture-box">
+        🗄️ SQLite Database
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="architecture-box">
+        📊 Data Science & ML Libraries
+    </div>
+
+    <div class="arrow">↓</div>
+
+    <div class="architecture-box">
+        🖥️ HTML Response
+    </div>
+
+</div>
+
+
+<div class="card flask-highlight">
+
+    <h2>
+        ⭐ Beyond-Syllabus Technology
+    </h2>
+
+    <h1>
+        Flask Web Framework
+    </h1>
+
+    <p>
+        Flask is implemented as the core web
+        framework of this project, integrating
+        the Python backend, HTML templates,
+        database operations, analytics and
+        machine learning into one web application.
+    </p>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="dashboard">
+
+    <h1>
+        Smart Student Management
+        & Performance Analytics System
+    </h1>
+
+    <p class="subtitle">
+        Manage student records, marks, attendance
+        and perform data analysis using Python.
+    </p>
+
+</div>
+
+
+<div class="cards">
+
+    <div class="card">
+
+        <h2>👨‍🎓 Students</h2>
+
+        <h1>{{ total_students }}</h1>
+
+        <p>
+            Student records available
+        </p>
+
+        <a href="/students">
+            Manage Students
+        </a>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>📚 Marks</h2>
+
+        <h1>{{ total_marks }}</h1>
+
+        <p>
+            Marks records available
+        </p>
+
+        <a href="/marks">
+            Manage Marks
+        </a>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>📅 Attendance</h2>
+
+        <h1>{{ total_attendance }}</h1>
+
+        <p>
+            Attendance records available
+        </p>
+
+        <a href="/attendance">
+            Manage Attendance
+        </a>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>📊 Analytics</h2>
+
+        <p>
+            Pandas, NumPy, SciPy,
+            Matplotlib and Seaborn
+        </p>
+
+        <a href="/analytics">
+            View Analytics
+        </a>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>🤖 Machine Learning</h2>
+
+        <p>
+            Predict Pass / Fail using
+            Scikit-learn
+        </p>
+
+        <a href="/prediction">
+            Open Prediction
+        </a>
+
+    </div>
+
+
+    <div class="card flask-card">
+
+        <h2>🌐 Flask Web Application</h2>
+
+        <p>
+            Core web framework used for
+            routing, templates, forms,
+            database integration and
+            application logic.
+        </p>
+
+        <a href="/flask-info">
+            View Flask Architecture
+        </a>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>📁 File Management</h2>
+
+        <p>
+            CSV, Text and Pickle
+            file operations
+        </p>
+
+        <a href="/export-csv">
+            Export CSV
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}
